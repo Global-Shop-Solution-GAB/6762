@@ -1,0 +1,791 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.f_Main..Create(BaseForm)
+Gui.f_Main..Caption("BOM Cost Report")
+Gui.f_Main..Size(1072,617)
+Gui.f_Main..MinX(0)
+Gui.f_Main..MinY(0)
+Gui.f_Main..Position(0,0)
+Gui.f_Main..AlwaysOnTop(False)
+Gui.f_Main..FontName("Tahoma")
+Gui.f_Main..FontSize(8.25)
+Gui.f_Main..ControlBox(True)
+Gui.f_Main..MaxButton(True)
+Gui.f_Main..MinButton(True)
+Gui.f_Main..MousePointer(0)
+Gui.f_Main..Moveable(True)
+Gui.f_Main..Sizeable(True)
+Gui.f_Main..ShowInTaskBar(True)
+Gui.f_Main..TitleBar(True)
+Gui.f_Main..Event(UnLoad,f_Main_UnLoad)
+Gui.f_Main.SplitContainer.Create(SplitContainer)
+Gui.f_Main.SplitContainer.Enabled(True)
+Gui.f_Main.SplitContainer.Visible(True)
+Gui.f_Main.SplitContainer.Zorder(0)
+Gui.f_Main.SplitContainer.Size(1072,587)
+Gui.f_Main.SplitContainer.Position(0,0)
+Gui.f_Main.SplitContainer.Orientation(1)
+Gui.f_Main.SplitContainer.SplitterPosition(148)
+Gui.f_Main.SplitContainer.Collapsed(False)
+Gui.f_Main.SplitContainer.Dock(5)
+Gui.f_Main.GsGcBOM.Create(GsGridControl)
+Gui.f_Main.GsGcBOM.Enabled(True)
+Gui.f_Main.GsGcBOM.Visible(True)
+Gui.f_Main.GsGcBOM.Zorder(0)
+Gui.f_Main.GsGcBOM.Size(1072,388)
+Gui.f_Main.GsGcBOM.Position(0,0)
+Gui.f_Main.GsGcBOM.Dock(5)
+Gui.f_Main.GsGcBOM.Parent("SplitContainer",1)
+Gui.f_Main.cmdProcess.Create(Button)
+Gui.f_Main.cmdProcess.Enabled(False)
+Gui.f_Main.cmdProcess.Visible(True)
+Gui.f_Main.cmdProcess.Zorder(0)
+Gui.f_Main.cmdProcess.Size(75,20)
+Gui.f_Main.cmdProcess.Position(983,14)
+Gui.f_Main.cmdProcess.Caption("Process")
+Gui.f_Main.cmdProcess.FontName("Tahoma")
+Gui.f_Main.cmdProcess.FontSize(8.25)
+Gui.f_Main.cmdProcess.Event(Click,cmdProcess_Click)
+Gui.f_Main.cmdProcess.Anchor(9)
+Gui.f_Main.cmdProcess.Parent("SplitContainer",0)
+Gui.f_Main.frameBOM.Create(Frame)
+Gui.f_Main.frameBOM.Enabled(True)
+Gui.f_Main.frameBOM.Visible(True)
+Gui.f_Main.frameBOM.Zorder(0)
+Gui.f_Main.frameBOM.Size(436,60)
+Gui.f_Main.frameBOM.Position(6,7)
+Gui.f_Main.frameBOM.Caption("")
+Gui.f_Main.frameBOM.FontName("Tahoma")
+Gui.f_Main.frameBOM.FontSize(8.25)
+Gui.f_Main.frameBOM.Parent("SplitContainer",0)
+Gui.f_Main.frameBOM.BorderStyle(3)
+Gui.f_Main.lblParent.Create(Label,"BOM Parent Number:",True,101,13,0,7,9,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblParent.BorderStyle(0)
+Gui.f_Main.lblParent.Parent("frameBOM")
+Gui.f_Main.txtParent.Create(TextBox,"",True,130,20,0,7,29,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtParent.Parent("frameBOM")
+Gui.f_Main.cmdBrowse.Create(Button)
+Gui.f_Main.cmdBrowse.Enabled(True)
+Gui.f_Main.cmdBrowse.Visible(True)
+Gui.f_Main.cmdBrowse.Zorder(0)
+Gui.f_Main.cmdBrowse.Size(27,20)
+Gui.f_Main.cmdBrowse.Position(140,29)
+Gui.f_Main.cmdBrowse.Caption("^")
+Gui.f_Main.cmdBrowse.FontName("Tahoma")
+Gui.f_Main.cmdBrowse.FontSize(8.25)
+Gui.f_Main.cmdBrowse.Parent("frameBOM")
+Gui.f_Main.cmdBrowse.Event(Click,cmdBrowse_Click)
+Gui.f_Main.lblDesc.Create(Label,"Description:",True,57,13,0,175,9,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblDesc.BorderStyle(0)
+Gui.f_Main.lblDesc.Parent("frameBOM")
+Gui.f_Main.txtDesc.Create(TextBox,"",True,252,20,0,175,29,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtDesc.Parent("frameBOM")
+Gui.f_Main.cmdExport.Create(Button)
+Gui.f_Main.cmdExport.Enabled(True)
+Gui.f_Main.cmdExport.Visible(True)
+Gui.f_Main.cmdExport.Zorder(0)
+Gui.f_Main.cmdExport.Size(75,20)
+Gui.f_Main.cmdExport.Position(983,44)
+Gui.f_Main.cmdExport.Caption("Export")
+Gui.f_Main.cmdExport.FontName("Tahoma")
+Gui.f_Main.cmdExport.FontSize(8.25)
+Gui.f_Main.cmdExport.Anchor(9)
+Gui.f_Main.cmdExport.Parent("SplitContainer",0)
+Gui.f_Main.cmdExport.Event(Click,cmdExport_Click)
+Gui.f_Main.GSGCQtybreaks.Create(GsGridControl)
+Gui.f_Main.GSGCQtybreaks.Enabled(True)
+Gui.f_Main.GSGCQtybreaks.Visible(True)
+Gui.f_Main.GSGCQtybreaks.Zorder(0)
+Gui.f_Main.GSGCQtybreaks.Size(271,110)
+Gui.f_Main.GSGCQtybreaks.Position(470,8)
+Gui.f_Main.GSGCQtybreaks.Parent("SplitContainer",0)
+Gui.f_Main.GSGCQtybreaks.Dock(0)
+Gui.f_Main.chkuseinvcost.Create(CheckBox)
+Gui.f_Main.chkuseinvcost.Enabled(True)
+Gui.f_Main.chkuseinvcost.Visible(True)
+Gui.f_Main.chkuseinvcost.Zorder(0)
+Gui.f_Main.chkuseinvcost.Size(75,20)
+Gui.f_Main.chkuseinvcost.Position(9,71)
+Gui.f_Main.chkuseinvcost.Caption("")
+Gui.f_Main.chkuseinvcost.FontName("Tahoma")
+Gui.f_Main.chkuseinvcost.FontSize(8.25)
+Gui.f_Main.lbl1.Create(Label,"Use Inventory instead of router cost for material",True,234,13,0,36,74,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lbl1.BorderStyle(0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.bError.Declare(Boolean)
+V.Global.bUnattended.Declare(Boolean)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+'open db connection
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, V.Ambient.PPass)
+
+F.Intrinsic.Control.CallSub(BuildGrid)
+F.Intrinsic.Control.CallSub(FormatGrid)
+F.Intrinsic.Control.CallSub(DeSerialize)
+F.Intrinsic.Control.CallSub(SetContextMenus)
+Gui.f_Main.GSGCQtybreaks.Visible(False)
+Gui.f_Main..Show
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.BuildGrid.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.If(V.DataTable.dtBOM.Exists)
+	F.Data.DataTable.Close("dtBOM")
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.Create("dtBOM", True)
+F.Data.DataTable.AddColumn("dtBOM", "PART", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "SEQ", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "LEVEL", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "LOC", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "DESC", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "QTY", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "UM", "STRING")
+'F.Data.DataTable.AddColumn("dtBOM", "UM_COST", "FLOAT")
+'F.Data.DataTable.AddExpressionColumn("dtBOM", "EXT_MAT_COST", "FLOAT", "[QTY] * [UM_COST]")
+F.Data.DataTable.AddColumn("dtBOM", "EXT_MAT_COST", "FLOAT")
+F.Data.DataTable.AddExpressionColumn("dtBOM", "UM_COST", "FLOAT", "[EXT_MAT_COST] / [QTY]")
+F.Data.DataTable.AddColumn("dtBOM", "STAN_COST", "FLOAT")
+'F.Data.DataTable.AddColumn("dtBOM", "LABOR_TYPE", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "MAT_COST", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "LABOR_HRS", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "LABOR_COST", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM","OUT_COST", "FLOAT")
+'F.Data.DataTable.AddColumn("dtBOM","OH_TYPE", "STRING")
+F.Data.DataTable.AddColumn("dtBOM", "OH_HRS", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "OH_COST", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "MAT_LEAD", "FLOAT")
+F.Data.DataTable.AddColumn("dtBOM", "ASSY_LEAD", "FLOAT")
+'F.Data.DataTable.AddExpressionColumn("dtBOM", "TOTAL_COST", "FLOAT", "(CONVERT([EXT_MAT_COST], 'System.Double'))+(CONVERT([STAN_COST], 'System.Double'))+(CONVERT([LABOR_COST], 'System.Double'))+(CONVERT([OH_COST], 'System.Double'))+(CONVERT([OUT_COST], 'System.Double'))")
+F.Data.DataTable.AddExpressionColumn("dtBOM", "TOTAL_COST", "FLOAT", "(CONVERT([MAT_COST], 'System.Double'))+(CONVERT([LABOR_COST], 'System.Double'))+(CONVERT([OH_COST], 'System.Double'))+(CONVERT([OUT_COST], 'System.Double'))")
+'F.Data.DataTable.AddExpressionColumn("dtBOM", "TOTAL_COST", "FLOAT", "[EXT_MAT_COST]")
+F.Data.DataTable.AddExpressionColumn("dtBOM", "COST_DIFF", "FLOAT", "[TOTAL_COST] - [STAN_COST]")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.BuildGrid.End
+
+Program.Sub.FormatGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sDefault.Declare(String)
+V.Local.sGV.Declare(String)
+V.Local.sProperty.Declare(String)
+
+Gui.f_Main.GsGcBOM.AddGridviewFromDatatable("gvBOM", "dtBOM")
+V.Local.sGV.Set("gvBOM")
+Gui.f_Main.GsGcBOM.SetGridviewProperty(V.Local.sGV,"OptionsViewColumnAutoWidth",False)
+Gui.f_Main.GsGcBOM.SetGridviewProperty(V.Local.sGV, "AllowFilter",True)
+Gui.f_Main.GsGcBOM.SetGridviewProperty(V.Local.sGV, "AllowSort",True)
+'Gui.f_Main.GsGcBOM.SetGridviewProperty(V.Local.sGV, "AllowColumnMoving", False)
+gui.f_Main.GsGcBOM.SetGridviewProperty(V.Local.sGV, "ShowgroupPanel", False)
+
+V.Local.sProperty.Set("AllowEdit")
+V.Local.sDefault.Set("False")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("ReadOnly")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("Caption")
+V.Local.sDefault.Set(" ")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, "Part")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, "Sequence")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, "Level")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, "Location")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, "Description")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, "Quantity")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, "UM")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, "UM Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, "Extended Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, "Standard Cost/Unit")
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, "Labor Type")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, "Material Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, "Labor Hours")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, "Labor Cost")
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, "Overhead Type")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, "Overhead Hours")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, "Overhead Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, "Outside Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, "Material Lead Time")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, "Assembly Lead Time")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, "Added Cost")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, "Cost Difference")
+
+V.Local.sProperty.Set("HeaderBackColor")
+V.Local.sDefault.Set(V.Enum.ThemeColors!ThemeColorDark)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderForeColor")
+V.Local.sDefault.Set(v.Enum.ThemeColors!TextOnThemeColor)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, v.Local.sDefault)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("MinWidth")
+V.Local.sDefault.Set(100)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "PART", V.Local.sProperty, 150)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "SEQ", V.Local.sProperty, 60)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LEVEL", V.Local.sProperty, 50)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LOC", V.Local.sProperty, 65)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "DESC", V.Local.sProperty, 250)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, 60)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM", V.Local.sProperty, 50)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, 75)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, 90)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_TYPE", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, 90)
+'Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_TYPE", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, 90)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, 90)
+
+V.Local.sProperty.Set("DisplayCustomNumeric")
+V.Local.sDefault.Set("$#,###,###,##0.00")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "UM_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "EXT_MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "STAN_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OUT_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "TOTAL_COST", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "COST_DIFF", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("DisplayCustomNumeric")
+V.Local.sDefault.Set("#,###,###,##0.00##")
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "LABOR_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "OH_HRS", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "MAT_LEAD", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcBOM.SetColumnProperty(V.Local.sGV, "ASSY_LEAD", V.Local.sProperty, v.Local.sDefault)
+
+Gui.f_Main.GsGcBOM.AddSummaryItem(V.Local.sGV, "TOTAL_COST", "TOTALCOST", "SUM", "Total Cost: ", "", "c2")
+Gui.f_Main.GsGcBOM.AddSummaryItem(V.Local.sGV, "STAN_COST", "STANCOST", "SUM", "Standard Cost: ", "", "c2")
+Gui.f_Main.GsGcBOM.AddSummaryItem(V.Local.sGV, "COST_DIFF", "COSTDIFF", "SUM", "Cost Difference: ", "", "c2")
+
+Gui.f_Main.GsGcBOM.MainView("gvBOM")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.FormatGrid.End
+
+Program.Sub.cmdBrowse_Click.Start
+F.Intrinsic.Control.Try
+V.Local.iLen.Declare(Long)
+V.Local.sDesc.Declare(String)
+V.Local.sParent.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.sRev.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.Browser(3000,"", V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(v.Local.sRet,"*!*", v.Local.sRet)
+	V.Local.sParent.Set(V.Local.sRet(0).Trim)
+	V.Local.sDesc.Set(V.Local.sRet(1).Trim)
+	
+	Gui.f_Main.txtParent.Text(V.Local.sParent.Trim)
+	Gui.f_Main.txtDesc.Text(v.Local.sDesc.Trim)
+	
+	Gui.f_Main.cmdProcess.Enabled(True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowse_Click.End
+
+Program.Sub.cmdProcess_Click.Start
+F.Intrinsic.Control.Try
+V.Local.fAddedCost.Declare(Float)
+V.Local.fLaborHrs.Declare(Float)
+V.Local.fLaborCost.Declare(Float)
+V.Local.fMatCost.Declare(Float)
+V.Local.fOutCost.Declare(Float)
+V.Local.fFreightCost.Declare(Float)
+V.Local.fExtCost.Declare(Float)
+V.Local.fOtherCost.Declare(Float)
+V.Local.fOHCost.Declare(Float)
+V.Local.fQty.Declare(Float)
+V.Local.fTotalCost.Declare(Float)
+V.Local.iCnt.Declare(Long)
+V.Local.iCnt2.Declare(Long)
+V.Local.iCnt3.Declare(Long)
+V.Local.iLevelCnt.Declare(Long)
+V.Local.sDesc.Declare(String)
+V.Local.sIsParent.Declare(String)
+V.Local.sLevel.Declare(String)
+V.Local.sLoc.Declare(String)
+V.Local.sParent.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sColumnRet.Declare(String)
+V.Local.sSeq.Declare(String)
+V.Local.sStatus.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sUM.Declare(String)
+V.Local.sTempPart.Declare(String)
+
+V.Local.sParent.Set(V.Screen.f_Main!txtParent.Text)
+
+Gui.f_Main.GsGcBOM.Visible(False)
+F.Intrinsic.Control.If(V.DataTable.dtBOM.RowCount--,>,-1)
+	F.Data.DataTable.DeleteRow("dtBOM")
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.CallSub(Serialize)
+'use the Manufacturing.BOM.CostBuildup Callwrapper to grab the BI data and load the table
+F.Global.Callwrapper.New("BOMCost","Manufacturing.BOM.CostBuildup")
+
+f.Intrinsic.Control.If(v.Screen.f_Main!chkuseinvcost.Value,=,1)
+	F.Global.Callwrapper.SetProperty("BOMCost", "Program", "JB0308")
+f.Intrinsic.Control.Else
+	F.Global.Callwrapper.SetProperty("BOMCost", "Program", "RE0100")
+f.Intrinsic.Control.EndIf
+
+F.Global.Callwrapper.SetProperty("BOMCost", "Flags", "2")
+F.Global.Callwrapper.SetProperty("BOMCost", "Parent", V.Local.sParent)
+F.Global.Callwrapper.SetProperty("BOMCost", "UseBestOrderQty", False)
+F.Global.Callwrapper.SetProperty("BOMCost", "UseStandardCostQty", False)
+F.Global.Callwrapper.Run("BOMCost")
+F.Global.CallWrapper.GetProperty("BOMCost","Status",V.Local.sStatus)
+
+F.Intrinsic.Control.If(V.Local.sStatus,=,"Success")
+	
+	'query BI table to pull in the information associated with the BOM Cost buildup
+	'F.Intrinsic.String.Build("SELECT LOCN, SEQUENCE, LEVEL, PART, DESCRIPTION, UNIT, ADDED_COST, MATERIAL, LABOR, OVERHEAD, OUTSIDE, FREIGHT, OTHER, LABOR_HRS FROM BI_BOM_BUILDUP_E WHERE TRMNL = '{0}' AND PARENT_KEY = '{1}' AND RPTID = '004203' AND DESCRIPTION <> '' AND PART <> '' ", V.Caller.Terminal, V.Local.sParent.Trim, V.Local.sSQL)
+	F.Intrinsic.String.Build("SELECT LOCN, SEQUENCE, LEVEL, PART, DESCRIPTION, UNIT, ADDED_COST, MATERIAL, LABOR, OVERHEAD, OUTSIDE, FREIGHT, OTHER, LABOR_HRS, PARENT_QTY_1 FROM BI_BOM_BUILDUP_E WHERE TRMNL = '{0}' AND PARENT_KEY = '{1}' AND RPTID = '004203' AND DESCRIPTION <> '' AND PART <> '' ", V.Caller.Terminal, V.Local.sParent.Trim, V.Local.sSQL)
+	
+	F.Intrinsic.Control.If(V.DataTable.dtBOMBuild.Exists,=,True)
+		F.Data.DataTable.Close("dtBOMBuild")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataTable.CreateFromSQL("dtBOMBuild", "con", V.Local.sSQL, True)
+	
+	'add the data to the BOM datatable
+	F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtBOMBuild.RowCount--,1)
+		V.Local.sLoc.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).LOCN!FieldValTrim)
+		V.Local.sSeq.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).SEQUENCE!FieldValTrim)
+		V.Local.sLevel.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).LEVEL!FieldValTrim)
+		V.Local.sPart.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).PART!FieldValTrim)
+		V.Local.sDesc.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).DESCRIPTION!FieldValTrim)
+		V.Local.sUM.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).UNIT!FieldValTrim)
+		V.Local.fAddedCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).ADDED_COST!FieldVal)
+		V.Local.fExtCost.Set(V.DataTable.dtBOMBuild(V.Local.iCnt).ADDED_COST!FieldVal)
+		V.Local.fMatCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).MATERIAL!FieldVal)
+		V.Local.fLaborCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).LABOR!FieldVal)
+		V.Local.fOHCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).OVERHEAD!FieldVal)
+		v.Local.fOutCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).OUTSIDE!FieldVal)
+		V.Local.fFreightCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).FREIGHT!FieldVal)
+		V.Local.fOtherCost.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).OTHER!FieldVal)
+		V.Local.fLaborHrs.Set(V.DataTable.dtBOMBuild(v.Local.iCnt).LABOR_HRS!FieldVal)
+		V.Local.fQty.Set(V.DataTable.dtBOMBuild(V.Local.iCnt).PARENT_QTY_1!FieldVal)
+	
+		F.Data.DataTable.AddRow("dtBOM", "PART", V.Local.sPart.Trim, "SEQ", V.Local.sSeq.Trim, "LEVEL", v.Local.sLevel.Trim, "LOC", V.Local.sLoc.Trim, "DESC", V.Local.sDesc.Trim,"UM", V.Local.sUM.Trim, "LABOR_HRS", V.Local.fLaborHrs, "LABOR_COST", V.Local.fLaborCost, "OH_HRS", V.Local.fLaborHrs,"OH_COST", V.Local.fOHCost, "OUT_COST", V.Local.fOutCost, "EXT_MAT_COST", V.Local.fExtCost, "QTY", V.Local.fQty, "MAT_COST", v.Local.fMatCost)
+	
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+
+'	F.Intrinsic.String.Build("SELECT RTRIM(LTRIM(PART)) AS 'PART', QUANTITY AS 'QTY' FROM V_BOM_MSTR WHERE PARENT = '{0}' AND PART <> '' ORDER BY PART", v.Local.sParent.Trim, v.Local.sSQL)
+'	F.Data.Dictionary.CreateFromSQL("dictQty", "con", v.Local.sSQL)
+'	F.Data.Dictionary.SetDefaultReturn("dictQty", 0.0000)
+'	F.Data.DataTable.FillFromDictionary("dtBOM", "dictQty","PART", "QTY")
+'	F.Data.Dictionary.Close("dictQty")
+'	
+	F.Data.Dictionary.CreateFromSQL("dictLead", "con", "SELECT RTRIM(LTRIM(PART)) AS 'PART', TIME_MATERIAL_LEAD AS 'MAT_LEAD' FROM V_INVENTORY_MSTR")
+	F.Data.Dictionary.SetDefaultReturn("dictLead", 0.0000)
+	F.Data.DataTable.FillFromDictionary("dtBOM", "dictLead", "PART", "MAT_LEAD")
+	F.Data.Dictionary.Close("dictLead")
+	
+	F.Data.Dictionary.CreateFromSQL("dictLead", "con", "SELECT RTRIM(LTRIM(PART)) AS 'PART', TIME_MATERIAL_LEAD AS 'ASSY_LEAD' FROM V_INVENTORY_MSTR")
+	F.Data.Dictionary.SetDefaultReturn("dictLead", 0.0000)
+	F.Data.DataTable.FillFromDictionary("dtBOM", "dictLead", "PART", "ASSY_LEAD")
+	F.Data.Dictionary.Close("dictLead")
+	
+'	F.Data.Dictionary.CreateFromSQL("dictCost", "con", "SELECT RTRIM(LTRIM(PART)) AS 'PART', COST AS 'UM_COST' FROM INVENTORY_COST")
+'	F.Data.Dictionary.SetDefaultReturn("dictCost", 0.0000)
+'	F.Data.DataTable.FillFromDictionary("dtBOM", "dictCost", "PART", "UM_COST")
+'	F.Data.Dictionary.Close("dictCost")
+	
+	F.Data.Dictionary.CreateFromSQL("dictCost", "con", "SELECT RTRIM(LTRIM(PART)) AS 'PART', COST AS 'STAN_COST' FROM INVENTORY_COST WHERE COST > 0")
+	F.Data.Dictionary.SetDefaultReturn("dictCost", 0.0000)
+	F.Data.DataTable.FillFromDictionary("dtBOM", "dictCost", "PART", "STAN_COST")
+	F.Data.Dictionary.Close("dictCost")
+	'set the value for the other columns
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0, V.DataTable.dtBOM.RowCount--,1)
+		F.Intrinsic.Control.If(v.DataTable.dtBOM(V.Local.iCnt).LEVEL!FieldValTrim, =, "PARENT")
+			f.Data.DataTable.SetValue("dtBOM", V.Local.iCnt, "QTY", 1.00)
+		F.Intrinsic.Control.EndIf
+
+'		V.Local.sPart.Set(V.DataTable.dtBOM(V.Local.iCnt).PART!FieldvalTrim)
+'		F.Intrinsic.String.Build("SELECT IS_PARENT FROM V_BOM_ENG WHERE PART = '{0}' ", V.Local.sPart.Trim, V.Local.sSQL)
+'		F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL, V.Local.sIsParent)
+'		F.Intrinsic.Control.If(V.Local.sIsParent,=,"Y")
+'			F.Intrinsic.String.Build("SELECT PART, QUANTITY AS 'QTY' FROM V_BOM_MSTR WHERE PARENT = '{0}' ORDER BY PART", v.Local.sPart.Trim, v.Local.sSQL)
+'			F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+'			F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+'				F.Intrinsic.String.Split(V.Local.sRet,"#$#", V.Local.sRet)
+'				F.Intrinsic.Control.For(V.Local.iCnt2, V.Local.sRet.LBound, V.Local.sRet.UBound,1)
+'					F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCnt2), "*!*", V.Local.sColumnRet)
+'					V.Local.sTempPart.Set(V.Local.sColumnRet(0))
+'					V.Local.fQty.Set(V.Local.sColumnRet(1))
+'					F.Intrinsic.Control.For(V.Local.iCnt3,0,V.DataTable.dtBOM.RowCount--,1)
+'						F.Intrinsic.Control.If(V.DataTable.dtBOM(V.Local.iCnt3).PART!FieldValTrim,=,V.Local.sTempPart.Trim)
+'							F.Data.DataTable.SetValue("dtBOM", V.Local.iCnt3, "QTY", V.Local.fQty)
+'						F.Intrinsic.Control.EndIf
+'					F.Intrinsic.Control.Next(V.Local.iCnt3)
+'				F.Intrinsic.Control.Next(V.Local.iCnt2)			
+'			F.Intrinsic.Control.EndIf
+'			F.Data.DataTable.SetValue("dtBOM", V.Local.iCnt, "UM_COST", 0.0000, "EXT_MAT_COST", 0.0000, "STAN_COST", 0.0000)
+'		F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	F.Intrinsic.Control.CallSub("loadqtybreaks_dt")	
+	F.Intrinsic.Control.CallSub(DeSerialize)
+	Gui.f_Main.GsGcBOM.Visible(True)	
+	Gui.f_Main.GSGCQtybreaks.Visible(True)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Cost Buildup Failed", "Error")
+	Gui.f_Main.GsGcBOM.Visible(True)
+	Gui.f_Main.GSGCQtybreaks.Visible(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdProcess_Click.End
+
+Program.Sub.cmdExport_Click.Start
+F.Intrinsic.Control.Try
+V.Local.bExists.Declare(Boolean)
+V.Local.sFilePath.Declare(String)
+V.Local.sMessage.Declare(String)
+
+F.Intrinsic.String.Build("{0}\BOM_COST_EXPORT_{1}.xlsx", V.Caller.FilesDir, v.Ambient.Date.FormatMMDDYYYY,V.Local.sFilePath)
+Gui.f_Main.GsGcBOM.Export(V.Local.sFilePath.Trim, "xlsx")
+
+F.Automation.MSExcel.CheckPresence(V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,True)
+	F.Intrinsic.Task.ShellExec(V.Caller.Handle, "open", V.Local.sFilePath,"", "", 1)
+F.Intrinsic.Control.Else
+'	F.Intrinsic.String.Build("Unable to Export Grid - Excel not installed. File location: {0}", v.Local.sFilePath.Trim, V.Local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.Local.sMessage, "Unable to Export Grid - Excel not installed")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
+Program.Sub.f_Main_UnLoad.Start
+F.Intrinsic.Control.Try
+
+'close connection
+F.ODBC.Connection!con.Close
+'end the program
+F.Intrinsic.Control.CallSub(Serialize)
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.f_Main_UnLoad.End
+
+Program.Sub.ErrorMessage.Start
+'basic error message for replacing catch block
+'this is really just for when printing the message and ending program
+'pass error number, error description, current subroutine
+'optional callback sub, this will be called before ending
+'optional unattended parameters, those subs may not exist if not using them but won't be called
+F.Intrinsic.Control.Try
+
+V.Local.iError.Declare(Long)
+V.Local.sErrorDescription.Declare(String)
+V.Local.sSubroutine.Declare(String)
+V.Local.sError.Declare(String)
+V.Local.bExists.Declare(Boolean)
+V.Local.sCallback.Declare(String)
+
+V.Local.iError.Set(V.Args.ErrorNumber)
+V.Local.sErrorDescription.Set(V.Args.ErrorDescription)
+V.Local.sSubroutine.Set(V.Args.Subroutine)
+
+'make sure we aren't in an error loop
+F.Intrinsic.Control.If(V.Global.bError)
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+V.Global.bError.Set(True)
+
+F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Caller.ScriptFile, V.Ambient.Newline, V.Local.sSubroutine, V.Local.iError, V.Local.sErrorDescription, V.Ambient.GABVersion, V.Local.sError)
+
+F.Intrinsic.Variable.ArgExists("UNATTENDED", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	F.Intrinsic.Control.If(V.Args.UNATTENDED)
+		F.Intrinsic.Control.CallSub(UnattendedErrorMessage, "MESSAGE", V.Local.sError, "PROJECT", V.Args.PROJECT, "PROJECTTITLE", V.Args.PROJECTTITLE)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Variable.ArgExists("Callback", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	V.Local.sCallback.Set(V.Args.Callback.Trim)
+	F.Intrinsic.Control.CallSub(V.Local.sCallback)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.ErrorMessage.End
+
+Program.Sub.LoadQtyBreaks_dt.Start
+v.Local.sSQL.Declare
+F.Intrinsic.String.Build("SELECT PARENT_QTY_1 AS 'QTY', PARENT_QTY_2 AS 'UNIT/COST' FROM BI_BOM_BUILDUP_E WHERE TRMNL = '{0}' AND PARENT_KEY = '{1}' AND RPTID = '004203' AND REC_TYPE = 'U' AND QTY>0 ORDER BY SEQUENCE", V.Caller.Terminal, V.Screen.f_Main!txtParent.Text, V.Local.sSQL)
+	
+	F.Intrinsic.Control.If(V.DataTable.dtQTYBreaks.Exists,=,True)
+		F.Data.DataTable.Close("dtQTYBreaks")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataTable.CreateFromSQL("dtQTYBreaks", "con", V.Local.sSQL, True)
+	F.Intrinsic.Control.CallSub("loadqtybreaks_gv")
+
+
+
+Program.Sub.LoadQtyBreaks_dt.End
+Program.Sub.LoadQtyBreaks_gv.Start
+F.Intrinsic.Control.Try
+V.Local.sDefault.Declare(String)
+V.Local.sGV.Declare(String)
+V.Local.sProperty.Declare(String)
+
+gui.f_Main.GSGCQtybreaks.AddGridviewFromDatatable("gvQTYBreaks", "dtQTYBreaks")
+V.Local.sGV.Set("gvQTYBreaks")
+gui.f_Main.GSGCQtybreaks.SetGridviewProperty(V.Local.sGV,"OptionsViewColumnAutoWidth",True)
+gui.f_Main.GSGCQtybreaks.SetGridviewProperty(V.Local.sGV, "AllowSort",False)
+gui.f_Main.GSGCQtybreaks.SetGridviewProperty(V.Local.sGV, "AllowColumnMoving", False)
+gui.f_Main.GSGCQtybreaks.SetGridviewProperty(V.Local.sGV, "ShowgroupPanel", False)
+
+V.Local.sProperty.Set("AllowEdit")
+V.Local.sDefault.Set("False")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, v.Local.sDefault)
+
+
+V.Local.sProperty.Set("ReadOnly")
+V.Local.sDefault.Set("True")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("Caption")
+V.Local.sDefault.Set(" ")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, "Qty")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, "Unit/Cost")
+
+V.Local.sProperty.Set("HeaderBackColor")
+V.Local.sDefault.Set(V.Enum.ThemeColors!ThemeColorDark)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderForeColor")
+V.Local.sDefault.Set(v.Enum.ThemeColors!TextOnThemeColor)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("MinWidth")
+V.Local.sDefault.Set(100)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, 60)
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, 60)
+
+V.Local.sProperty.Set("DisplayCustomNumeric")
+V.Local.sDefault.Set("$#,###,###,##0.0000")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "UNIT/COST", V.Local.sProperty, v.Local.sDefault)
+
+V.Local.sProperty.Set("DisplayCustomNumeric")
+V.Local.sDefault.Set("#,###,###,####")
+gui.f_Main.GSGCQtybreaks.SetColumnProperty(V.Local.sGV, "QTY", V.Local.sProperty, v.Local.sDefault)
+
+Gui.f_Main.GSGCQtybreaks.MainView("gvQTYBreaks")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6078", "ProjectTitle", "BOM Costs Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadQtyBreaks_gv.End
+
+Program.Sub.Serialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+
+	gui.f_Main.GsGcBOM.Serialize("gvBOM",V.Local.sSerialize)
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"GVBOM",6762,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"GVBOM",6762,1000,6,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		gui.f_Main.GsGcBOM.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.SetContextMenus.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	Gui.f_Main..ContextMenuCreate("ctxSearch")
+	Gui.f_Main.GsGcBOM.ContextMenuAttach("ctxSearch")	
+	Gui.f_Main..ContextMenuAddItem("ctxSearch","ResetColumns",0,"Reset Columns")
+	Gui.f_Main..ContextMenuSetItemEventHandler("ctxSearch","ResetColumns","MenuClickResetColumns")
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.SetContextMenus.End	
+
+Program.Sub.MenuClickResetColumns.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	F.Intrinsic.Control.SelectCase(V.Args.MenuName)
+		F.Intrinsic.Control.Case("CTXSEARCH")
+			F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"GVBOM",6762,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,"")			
+			F.Intrinsic.Control.CallSub(CmdProcess_Click)
+	F.Intrinsic.Control.EndSelect
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickResetColumns.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$bstevens$}$20220520161941713$}$3Pg7+K2MGztoXyjxMVZqWaM5g3GOUsSNrM4TCkZv+Mqava4+d+HaUpVmHlrpKX8fkHNMRRSmat+DyG2gvfoNmA==
+Program.Sub.Comments.End
